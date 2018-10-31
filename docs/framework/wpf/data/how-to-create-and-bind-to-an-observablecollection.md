@@ -127,7 +127,20 @@ End Class
          IsSynchronizedWithCurrentItem="True"/>  
 ```  
   
- The definition of `NameItemTemplate` is not shown here.  
+ The following is a definition of `NameItemTemplate`.
+ 
+ ```xaml
+ <DataTemplate x:Key="NameItemTemplate">
+    <TextBlock>
+        <TextBlock.Text>
+            <MultiBinding Converter="{StaticResource MyNameConverter}">
+                <Binding Path="FirstName"/>
+                <Binding Path="LastName"/>
+            </MultiBinding>
+        </TextBlock.Text>
+    </TextBlock>
+</DataTemplate>
+ ```
   
 > [!NOTE]
 >  The objects in your collection must satisfy the requirements described in the [Binding Sources Overview](../../../../docs/framework/wpf/data/binding-sources-overview.md). In particular, if you are using <xref:System.Windows.Data.BindingMode.OneWay> or <xref:System.Windows.Data.BindingMode.TwoWay> (for example, you want your [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] to update when the source properties change dynamically), you must implement a suitable property changed notification mechanism such as the <xref:System.ComponentModel.INotifyPropertyChanged> interface.  
